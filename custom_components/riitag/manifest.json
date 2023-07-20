@@ -1,0 +1,11 @@
+{
+  "domain": "riitag",
+  "name": "RiiTag",
+  "codeowners": ["@owenvoke"],
+  "config_flow": true,
+  "documentation": "https://github.com/owenvoke/hass-riitag",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/owenvoke/hass-riitag/issues",
+  "requirements": ["riitag-sdk==0.1.0"],
+  "version": "0.1.0"
+}

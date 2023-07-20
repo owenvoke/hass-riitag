@@ -1,0 +1,28 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "RiiTag is already configured"
+        },
+        "error": {
+            "invalid_username": "Invalid username.",
+            "server_error": "Could not reach RiiTag."
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "username": "Username",
+                    "scan_interval": "Scan interval (minutes)"
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "scan_interval": "Change scan interval (minutes)"
+                }
+            }
+        }
+    }
+}
