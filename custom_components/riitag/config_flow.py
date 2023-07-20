@@ -21,7 +21,7 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 CONFIG_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_USERNAME): cv.alphanumeric,
+        vol.Required(CONF_USERNAME): cv.string,
         vol.Optional(CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL): vol.All(
             vol.Coerce(int), vol.Range(min=1)
         ),
