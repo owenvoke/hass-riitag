@@ -11,9 +11,8 @@ from . import RiiTagUpdateCoordinator
 from .entity import RiiTagSensorEntity
 from .const import (
     DOMAIN,
-    SENSOR_KEY_USERNAME,
-    SENSOR_KEY_TAG_URL,
-    SENSOR_KEY_LAST_PLAYED, DEFAULT_SCAN_INTERVAL,
+    SENSOR_KEY_TAG,
+    DEFAULT_SCAN_INTERVAL,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -24,19 +23,9 @@ SCAN_INTERVAL = timedelta(minutes=DEFAULT_SCAN_INTERVAL)
 
 SENSORS: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(
-        key=SENSOR_KEY_USERNAME,
-        name="Username",
-        icon="mdi:account",
-    ),
-    SensorEntityDescription(
-        key=SENSOR_KEY_TAG_URL,
-        name="Tag URL",
-        icon="mdi:link",
-    ),
-    SensorEntityDescription(
-        key=SENSOR_KEY_LAST_PLAYED,
-        name="Last Played",
-        icon="mdi:controller-classic",
+        key=SENSOR_KEY_TAG,
+        name="Tag",
+        icon="mdi:account-tag",
     ),
 )
 

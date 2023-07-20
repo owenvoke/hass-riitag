@@ -7,9 +7,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import RiiTagUpdateCoordinator, DOMAIN
 from .const import (
-    SENSOR_KEY_USERNAME,
-    SENSOR_KEY_TAG_URL,
-    SENSOR_KEY_LAST_PLAYED,
+    SENSOR_KEY_TAG,
 )
 
 
@@ -34,32 +32,31 @@ class RiiTagSensorEntity(CoordinatorEntity[RiiTagUpdateCoordinator], SensorEntit
 
     @property
     def native_value(self) -> str:
-        if self.entity_description.key == SENSOR_KEY_USERNAME:
-            return self.coordinator.data["user"]["name"]
-
-        if self.entity_description.key == SENSOR_KEY_TAG_URL:
-            return self.coordinator.data["tag_url"]["normal"]
-
-        if self.entity_description.key == SENSOR_KEY_LAST_PLAYED:
+        if self.entity_description.key == SENSOR_KEY_TAG:
             return self.coordinator.data["game_data"]["last_played"]["game_id"]
 
         return STATE_UNAVAILABLE
 
     @property
     def extra_state_attributes(self):
-        if self.entity_description.key == SENSOR_KEY_USERNAME:
-            return {"id": self.coordinator.data["user"]["id"]}
-
-        if self.entity_description.key == SENSOR_KEY_TAG_URL:
-            return {"hd": self.coordinator.data["tag_url"]["max"]}
-
-        if self.entity_description.key == SENSOR_KEY_LAST_PLAYED:
+        if self.entity_description.key == SENSOR_KEY_TAG:
             return {
-                "console": self.coordinator.data["game_data"]["last_played"]["console"],
-                "cover_url": self.coordinator.data["game_data"]["last_played"][
-                    "cover_url"
-                ],
-                "time": self.coordinator.data["game_data"]["last_played"]["time"],
+                "user_id": self.coordinator.data["user"]["id"],
+                "user_name": self.coordinator.data["user"]["name"],
+                "tag_url": self.coordinator.data["tag_url"]["normal"],
+                "tag_url_hd": self.coordinator.data["tag_url"]["max"],
+                "last_played_game_id": self.coordinator.data["game_data"][
+                    "last_played"
+                ]["game_id"],
+                "last_played_console": self.coordinator.data["game_data"][
+                    "last_played"
+                ]["console"],
+                "last_played_cover_url": self.coordinator.data["game_data"][
+                    "last_played"
+                ]["cover_url"],
+                "last_played_time": str(
+                    self.coordinator.data["game_data"]["last_played"]["time"]
+                ),
             }
 
         return {}
