@@ -35,7 +35,7 @@ class RiiTagSensorEntity(CoordinatorEntity[RiiTagUpdateCoordinator], SensorEntit
     @property
     def native_value(self) -> str:
         if self.entity_description.key == SENSOR_KEY_USERNAME:
-            return self.coordinator.data["user"]["username"]
+            return self.coordinator.data["user"]["name"]
 
         if self.entity_description.key == SENSOR_KEY_TAG_URL:
             return self.coordinator.data["tag_url"]["normal"]
