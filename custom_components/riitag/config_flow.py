@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from datetime import timedelta
-from hashlib import md5
 import logging
 import voluptuous as vol
 
@@ -19,6 +18,15 @@ import homeassistant.helpers.config_validation as cv
 from .const import DOMAIN, DEFAULT_SCAN_INTERVAL
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+CONFIG_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_USERNAME): cv.positive_int,
+        vol.Optional(CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL): vol.All(
+            vol.Coerce(int), vol.Range(min=1)
+        ),
+    }
+)
 
 
 class RiiTagConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -48,17 +56,8 @@ class RiiTagConfigFlow(ConfigFlow, domain=DOMAIN):
             else:
                 errors[CONF_USERNAME] = "server_error"
 
-        config_schema = vol.Schema(
-            {
-                vol.Required(CONF_USERNAME): cv.string,
-                vol.Optional(
-                    CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL
-                ): vol.All(vol.Coerce(int), vol.Range(min=1)),
-            }
-        )
-
         return self.async_show_form(
-            step_id="user", data_schema=config_schema, errors=errors
+            step_id="user", data_schema=CONFIG_SCHEMA, errors=errors
         )
 
     @staticmethod
