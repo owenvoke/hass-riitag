@@ -20,7 +20,7 @@ _LOGGER = logging.getLogger(__name__)
 
 PLATFORMS: list[Platform] = [Platform.SENSOR]
 
-SCAN_INTERVAL = DEFAULT_SCAN_INTERVAL
+SCAN_INTERVAL = timedelta(minutes=DEFAULT_SCAN_INTERVAL)
 
 SENSORS: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(

@@ -4,7 +4,7 @@ from typing import Final
 
 DOMAIN: Final = "riitag"
 
-DEFAULT_SCAN_INTERVAL: Final = timedelta(minutes=5)
+DEFAULT_SCAN_INTERVAL: Final = 5
 
 SENSOR_KEY_USERNAME = "username"
 SENSOR_KEY_TAG_URL = "tag_url"
