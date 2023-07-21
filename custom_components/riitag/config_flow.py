@@ -34,7 +34,7 @@ class RiiTagConfigFlow(ConfigFlow, domain=DOMAIN):
 
     async def async_step_user(self, user_input=None) -> FlowResult:
         errors = {}
-        if user_input:
+        if user_input is not None:
             try:
                 tag = await self.hass.async_add_executor_job(
                     lambda: get_tag(
