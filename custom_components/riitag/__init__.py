@@ -24,7 +24,9 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         name=config_entry.title,
         username=config_entry.data[CONF_USERNAME],
         update_interval=timedelta(
-            minutes=(config_entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
+            minutes=(
+                config_entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL)
+            )
         ),
     )
 
