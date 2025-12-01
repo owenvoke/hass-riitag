@@ -1,4 +1,5 @@
 """The RiiTag integration"""
+
 import logging
 from datetime import timedelta
 

@@ -1,4 +1,5 @@
 """Constants for the RiiTag integration."""
+
 from datetime import timedelta
 from typing import Final
 
